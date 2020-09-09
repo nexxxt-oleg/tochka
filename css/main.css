@@ -1,0 +1,12 @@
+.main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.container-fluid {
+    max-width: 1300px;
+}
+.col--numb span {
+    display: block;
+    white-space: nowrap;
+}
