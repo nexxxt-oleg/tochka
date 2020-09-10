@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Управление аккаунтом банка</title>
+
+    <link rel="stylesheet" href="./css/bootstrap.css"/>
+    <link rel="stylesheet" href="./css/bootstrap-multiselect.css"/>
+    <link rel="stylesheet" href="./css/datatables.min.css"/>
+    <link rel="stylesheet" href="./css/main.css"/>
+</head>
+<body>
+
+<div class="main">
+    <header class="main__header bg-light">
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="navbar navbar-expand-lg navbar-light w-100">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarTogglerHeader" aria-controls="navbarTogglerHeader" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerHeader">
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/index.html">Список операций</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/ak-bank.html">Управление аккаунтом банка</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Управление пользователями</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Выйти</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <aside class="container-fluid main__wrap">
+        <div class="row pt-5">
+            <div class="col-lg-4 col-md-6 pb-3">
+                <button class="btn btn-outline-danger" data-toggle="modal" data-target="#addBankModal">Добавить интернет банкинг</button>
+            </div>
+            <div class="col-lg-8 col-md-6 pb-3">
+                <div class="d-none" id="activeBtns">
+                    <div class="d-flex flex-wrap justify-content-around">
+                        <button class="btn btn-outline-success">Обновит ключи</button>
+                        <button class="btn btn-outline-success">Архивировать аккаунт</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-5">
+            <div class="col-12">
+                <table class="table table-hover" >
+                    <thead>
+                    <tr>
+                        <th style="width: 50px"><input type="checkbox" class="form-check" id="allChek"></th>
+                        <th>Название кабинета</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><input name="id[]" type="checkbox" class="form-check form-check--tr" value="1"></td>
+                        <td><a href="">Аккаунт в банке</a></td>
+                    </tr>
+                    <tr>
+                        <td><input name="id[]" type="checkbox" class="form-check form-check--tr" value="2"></td>
+                        <td><a href="">Аккаунт в банке 2</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </aside>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addBankModal" tabindex="-1" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Добавление интернет банкинга</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="nameAkk" class="col-sm-5 col-form-label">Название аккаунта</label>
+                        <div class="col-sm-7">
+                            <input type="text" name="nameAkk"  class="form-control" id="nameAkk" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row pb-2">
+                        <label for="inputToken" class="col-sm-5 col-form-label">Токен</label>
+                        <div class="col-sm-7">
+                            <input type="text" name="inputToken" class="form-control" id="inputToken" value="">
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-outline-info float-right" value="Сохранить">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+<script src="./js/popper.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/bootstrap-multiselect.js"></script>
+<script src="./js/datatables.min.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
