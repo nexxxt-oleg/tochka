@@ -37,4 +37,14 @@ $(document).ready(function() {
         }
         hasChekTable();
     });
+
+    if($('#userSelect').length > 0) {
+        $('#userSelect').select2({
+            dropdownParent: $('#userModal'),
+            theme: 'bootstrap4',
+            language: "ru",
+            placeholder: "Выбор",
+        });
+    }
+
 });

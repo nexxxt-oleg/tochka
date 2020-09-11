@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Управление пользователями</title>
+
+    <link rel="stylesheet" href="./css/bootstrap.css"/>
+    <link rel="stylesheet" href="./css/bootstrap-multiselect.css"/>
+    <link rel="stylesheet" href="./css/datatables.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="./css/select2-bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css"/>
+</head>
+<body>
+
+<div class="main">
+    <header class="main__header bg-light">
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="navbar navbar-expand-lg navbar-light w-100">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarTogglerHeader" aria-controls="navbarTogglerHeader" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerHeader">
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/index.html">Список операций</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="/ak-bank.html">Управление аккаунтом банка</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/users.html">Управление пользователями</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Выйти</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <aside class="container-fluid main__wrap">
+        <div class="row pt-5">
+            <div class="col-lg-6 col-md-6 pb-3">
+                <button class="btn btn-outline-danger" data-toggle="modal" data-target="#addUserModal">Добавить пользователя</button>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="d-none" id="activeBtns">
+                    <div class="row">
+                        <div class="col-md-6 pb-3">
+                            <button class="btn btn-outline-success">Заблокировать</button>
+                        </div>
+                        <div class="col-md-6 pb-3">
+                            <button class="btn btn-outline-success" data-toggle="modal" data-target="#editBalansModal">Редактировать баланс</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row pb-5">
+            <div class="col-12">
+                <table id="tableMain" class="table  table-bordered" style="width:100%" >
+                    <thead>
+                    <tr>
+                        <th style="width: 50px"><input type="checkbox" class="form-check" id="allChek"></th>
+                        <th>Пользователь</th>
+                        <th>Текущий баланс на рекламу</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><input name="id[]" type="checkbox" class="form-check form-check--tr" value="1"></td>
+                        <td><button data-toggle="modal" data-target="#editAkkUserModal" class="btn btn-link">Жора</button></td>
+                        <td>50 000</td>
+                    </tr>
+                    <tr>
+                        <td><input name="id[]" type="checkbox" class="form-check form-check--tr" value="2"></td>
+                        <td><button data-toggle="modal" data-target="#editAkkUserModal" class="btn btn-link">Лена</button></td>
+                        <td>10 000</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </aside>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addUserModal" tabindex="-1" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Добавить пользователя</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="nameAkk" class="col-sm-5 col-form-label">ФИО</label>
+                        <div class="col-sm-7">
+                            <input type="text" name="nameAkk" class="form-control" id="nameAkk" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="emailAkk" class="col-sm-5 col-form-label">Email (логин)</label>
+                        <div class="col-sm-7">
+                            <input type="email" name="emailAkk" class="form-control" id="emailAkk" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="passwordAkk" class="col-sm-5 col-form-label">Пароль</label>
+                        <div class="col-sm-7">
+                            <input type="text" name="passwordAkk" class="form-control" id="passwordAkk" value="">
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-outline-info float-right" value="Сохранить">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editAkkUserModal" tabindex="-1" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Редактировать пользователя</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="editNameAkk" class="col-sm-5 col-form-label">ФИО</label>
+                        <div class="col-sm-7">
+                            <input type="text" name="editNameAkk" class="form-control" id="editNameAkk" value="Лена">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="editEmailAkk" class="col-sm-5 col-form-label">Email (логин)</label>
+                        <div class="col-sm-7">
+                            <input type="email" name="editEmailAkk" class="form-control" id="editEmailAkk" value="mail@mail.ru">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="editPasswordAkk" class="col-sm-5 col-form-label">Пароль</label>
+                        <div class="col-sm-7">
+                            <input type="text" name="editPasswordAkk" class="form-control" id="editPasswordAkk" value="123456">
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-outline-info float-right" value="Сохранить">
+                    <button class="btn btn-outline-danger float-left">Удалить пользователя</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editBalansModal" tabindex="-1" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Редактировать баланс</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="cost" class="col-sm-5 col-form-label">Введите сумму</label>
+                        <div class="col-sm-7">
+                            <input type="number" name="cost" class="form-control" id="cost" value="">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-outline-info float-right">Зачислить</button>
+                    <button type="submit" class="btn btn-outline-info float-left">Списать</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+<script src="./js/popper.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/bootstrap-multiselect.js"></script>
+<script src="./js/datatables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script src="./js/select2.ru.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
